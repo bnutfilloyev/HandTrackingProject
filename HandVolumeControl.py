@@ -3,9 +3,9 @@ import time
 import numpy as np
 import HandTrackingModule as htm
 import math
-from ctypes import cast, POINTER
-from comtypes import CLSCTX_ALL
-from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
+# from ctypes import cast, POINTER
+# from comtypes import CLSCTX_ALL
+# from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
 
 ###
@@ -16,13 +16,13 @@ cap = cv2.VideoCapture(0)
 detector = htm.HandDetector(detectionCon=0.7)
 
 
-devices = AudioUtilities.GetSpeakers()
-interface = devices.Activate(
-    IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
-volume = cast(interface, POINTER(IAudioEndpointVolume))
-volRange = volume.getVolumeRange()
-minVol = volRange[0]
-maxVol = volRange[1]
+# devices = AudioUtilities.GetSpeakers()
+# interface = devices.Activate(
+#     IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
+# volume = cast(interface, POINTER(IAudioEndpointVolume))
+# volRange = volume.getVolumeRange()
+# minVol = volRange[0]
+# maxVol = volRange[1]
 vol = 0
 volBar = 400
 volPer = 0
@@ -46,12 +46,12 @@ while True:
         length = math.hypot(x2-x1, y2-y1)
         print(length)
 
-        vol = np.interp(length, [50, 300], minVol, maxVol)
+        # vol = np.interp(length, [50, 300], minVol, maxVol)
         volBar = np.interp(length, [50, 300], [400, 150])
         volPer = np.interp(length, [50, 300], [ 0, 100])
         print(vol)
 
-        volume.setMasterVolumelevel(vol, None)
+        # volume.setMasterVolumelevel(vol, None)
 
         cv2.rectangle(img, (50, 150), (85, 400), (0, 255, 0), 3)
         cv2.rectangle(img, (50, int(volBar)), (85, 400), (0, 255, 0), cv2.FILLED)

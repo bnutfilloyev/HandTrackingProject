@@ -1,4 +1,4 @@
-#!/Users/yoshlikmedia/PycharmProjects/HandTrackingProject/venv/bin/python3
+#!/Users/yoshlikmedia/PycharmProjects/HandTrackingProject/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
